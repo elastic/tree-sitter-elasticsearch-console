@@ -46,7 +46,11 @@
   "tree-sitter": [
     {
       "scope": "source.kibana_dev_console",
-      "injection-regex": "^kibana_dev_console$"
+      "injection-regex": "^kibana_dev_console$",
+      "file-types": [
+        "kdc"
+      ],
+      "highlights": "queries/highlights.scm"
     }
   ]
 }
