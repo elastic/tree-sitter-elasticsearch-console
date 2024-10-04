@@ -1,0 +1,81 @@
+{
+  "name": "kibana_dev_console",
+  "rules": {
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "request"
+      }
+    },
+    "request_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "GET"
+        },
+        {
+          "type": "STRING",
+          "value": "HEAD"
+        },
+        {
+          "type": "STRING",
+          "value": "DELETE"
+        },
+        {
+          "type": "STRING",
+          "value": "POST"
+        },
+        {
+          "type": "STRING",
+          "value": "PUT"
+        }
+      ]
+    },
+    "request_path": {
+      "type": "PATTERN",
+      "value": "\\/?([\\w\\-\\*\\.]+\\/?)+(\\?[^\\&\\?\\s]*(\\&[^\\&\\?\\s]*)*)?"
+    },
+    "request_body": {
+      "type": "PATTERN",
+      "value": "\\{[^\\}]*\\}"
+    },
+    "request": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "request_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "request_path"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "request_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}

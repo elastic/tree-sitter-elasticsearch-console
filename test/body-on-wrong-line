@@ -1,0 +1,1 @@
+POST /my-index {"foo": "bar"}
