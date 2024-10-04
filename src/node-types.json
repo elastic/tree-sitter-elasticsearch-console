@@ -23,6 +23,11 @@
     }
   },
   {
+    "type": "request_body",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "request_type",
     "named": true,
     "fields": {}
@@ -41,6 +46,22 @@
         }
       ]
     }
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "\"\"\"",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
   },
   {
     "type": "DELETE",
@@ -63,11 +84,35 @@
     "named": false
   },
   {
-    "type": "request_body",
-    "named": true
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "false",
+    "named": false
+  },
+  {
+    "type": "null",
+    "named": false
   },
   {
     "type": "request_path",
     "named": true
+  },
+  {
+    "type": "true",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]
