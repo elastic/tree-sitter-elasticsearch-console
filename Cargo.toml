@@ -1,12 +1,12 @@
 [package]
-name = "tree-sitter-kibana-dev-console"
-description = "KibanaDevConsole grammar for tree-sitter"
+name = "tree-sitter-elasticsearch-console"
+description = "ElasticsearchConsole grammar for tree-sitter"
 version = "0.0.1"
 license = "MIT"
 readme = "README.md"
-keywords = ["incremental", "parsing", "tree-sitter", "kibana-dev-console"]
+keywords = ["incremental", "parsing", "tree-sitter", "elasticsearch-console"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/tree-sitter/tree-sitter-kibana-dev-console"
+repository = "https://github.com/tree-sitter/tree-sitter-elasticsearch-console"
 edition = "2021"
 autoexamples = false
 

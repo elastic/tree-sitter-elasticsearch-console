@@ -1,4 +1,4 @@
-module github.com/tree-sitter/tree-sitter-kibana_dev_console
+module github.com/tree-sitter/tree-sitter-elasticsearch_console
 
 go 1.23
 

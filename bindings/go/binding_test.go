@@ -1,15 +1,15 @@
-package tree_sitter_kibana_dev_console_test
+package tree_sitter_elasticsearch_console_test
 
 import (
 	"testing"
 
 	tree_sitter "github.com/tree-sitter/go-tree-sitter"
-	tree_sitter_kibana_dev_console "github.com/tree-sitter/tree-sitter-kibana_dev_console/bindings/go"
+	tree_sitter_elasticsearch_console "github.com/tree-sitter/tree-sitter-elasticsearch_console/bindings/go"
 )
 
 func TestCanLoadGrammar(t *testing.T) {
-	language := tree_sitter.NewLanguage(tree_sitter_kibana_dev_console.Language())
+	language := tree_sitter.NewLanguage(tree_sitter_elasticsearch_console.Language())
 	if language == nil {
-		t.Errorf("Error loading KibanaDevConsole grammar")
+		t.Errorf("Error loading ElasticsearchConsole grammar")
 	}
 }

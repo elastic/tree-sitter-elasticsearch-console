@@ -1,8 +1,8 @@
 {
-  "name": "tree-sitter-kibana-dev-console",
+  "name": "tree-sitter-elasticsearch-console",
   "version": "0.0.1",
-  "description": "KibanaDevConsole grammar for tree-sitter",
-  "repository": "github:tree-sitter/tree-sitter-kibana-dev-console",
+  "description": "ElasticsearchConsole grammar for tree-sitter",
+  "repository": "github:tree-sitter/tree-sitter-elasticsearch-console",
   "license": "MIT",
   "main": "bindings/node",
   "types": "bindings/node",
@@ -10,7 +10,7 @@
     "incremental",
     "parsing",
     "tree-sitter",
-    "kibana_dev_console"
+    "elasticsearch_console"
   ],
   "files": [
     "grammar.js",

@@ -1,4 +1,4 @@
-"""KibanaDevConsole grammar for tree-sitter"""
+"""ElasticsearchConsole grammar for tree-sitter"""
 
 from importlib.resources import files as _files
 

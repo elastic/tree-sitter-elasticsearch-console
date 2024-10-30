@@ -2,16 +2,16 @@
 import PackageDescription
 
 let package = Package(
-    name: "TreeSitterKibanaDevConsole",
+    name: "TreeSitterElasticsearchConsole",
     products: [
-        .library(name: "TreeSitterKibanaDevConsole", targets: ["TreeSitterKibanaDevConsole"]),
+        .library(name: "TreeSitterElasticsearchConsole", targets: ["TreeSitterElasticsearchConsole"]),
     ],
     dependencies: [
         .package(url: "https://github.com/ChimeHQ/SwiftTreeSitter", from: "0.8.0"),
     ],
     targets: [
         .target(
-            name: "TreeSitterKibanaDevConsole",
+            name: "TreeSitterElasticsearchConsole",
             dependencies: [],
             path: ".",
             sources: [
@@ -25,12 +25,12 @@ let package = Package(
             cSettings: [.headerSearchPath("src")]
         ),
         .testTarget(
-            name: "TreeSitterKibanaDevConsoleTests",
+            name: "TreeSitterElasticsearchConsoleTests",
             dependencies: [
                 "SwiftTreeSitter",
-                "TreeSitterKibanaDevConsole",
+                "TreeSitterElasticsearchConsole",
             ],
-            path: "bindings/swift/TreeSitterKibanaDevConsoleTests"
+            path: "bindings/swift/TreeSitterElasticsearchConsoleTests"
         )
     ],
     cLanguageStandard: .c11

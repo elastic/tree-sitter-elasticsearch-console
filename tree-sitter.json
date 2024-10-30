@@ -1,23 +1,23 @@
 {
   "grammars": [
     {
-      "name": "kibana-dev-console",
-      "camelcase": "KibanaDevConsole",
-      "scope": "source.kibana_dev_console",
+      "name": "elasticsearch-console",
+      "camelcase": "ElasticsearchConsole",
+      "scope": "source.elasticsearch_console",
       "path": ".",
       "file-types": [
-        "kdc"
+        "esc"
       ],
       "highlights": "queries/highlights.scm",
-      "injection-regex": "^kibana_dev_console$"
+      "injection-regex": "^elasticsearch_console$"
     }
   ],
   "metadata": {
     "version": "0.0.1",
     "license": "MIT",
-    "description": "KibanaDevConsole grammar for tree-sitter",
+    "description": "ElasticsearchConsole grammar for tree-sitter",
     "links": {
-      "repository": "https://github.com/tree-sitter/tree-sitter-kibana-dev-console"
+      "repository": "https://github.com/tree-sitter/tree-sitter-elasticsearch-console"
     }
   },
   "bindings": {

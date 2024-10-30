@@ -4,7 +4,7 @@ endif
 
 VERSION := 0.0.1
 
-LANGUAGE_NAME := tree-sitter-kibana_dev_console
+LANGUAGE_NAME := tree-sitter-elasticsearch_console
 
 # repository
 SRC_DIR := src
