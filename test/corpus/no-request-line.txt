@@ -1,0 +1,8 @@
+===
+No request line
+:error
+===
+
+{"foo": "bar"}
+
+---

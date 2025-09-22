@@ -1,0 +1,13 @@
+=========================
+Request with no JSON body
+=========================
+
+GET _cat/indices?foo=bar
+
+---
+
+(source_file
+  (request
+    (request_line
+     (method)
+     (path))))

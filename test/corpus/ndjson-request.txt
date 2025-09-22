@@ -1,0 +1,16 @@
+===
+Newline-delimited JSON in body
+===
+
+POST /_bulk/
+{ "index" : { "_index" : "test", "_id" : "1" } }
+{ "field1" : "value1" }
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))
+    (body)))

@@ -1,0 +1,38 @@
+===
+Multiple requests
+===
+
+GET _cat/indices?foo=bar
+
+POST /my-index
+{"foo": "bar"}
+
+POST   /my-index
+{
+  "string": "foo",
+  "boolean": true,
+  "number": 1.23,
+  "null_value": null,
+  "object": {
+    "foo": "bar"
+  },
+  "array": [1, "two", 3.0, null, false]
+}
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path)))
+  (request
+    (request_line
+      (method)
+      (path))
+    (body))
+  (request
+    (request_line
+      (method)
+      (path))
+    (body)))

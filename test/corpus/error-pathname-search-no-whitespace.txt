@@ -1,0 +1,8 @@
+===
+No whitespace allowed between pathname and search
+:error
+===
+
+GET /foo/bar ?baz=bat
+
+---

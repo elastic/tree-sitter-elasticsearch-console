@@ -5,11 +5,75 @@
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "SYMBOL",
-        "name": "request"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "request"
+          },
+          {
+            "type": "STRING",
+            "value": "\n"
+          }
+        ]
       }
     },
-    "request_type": {
+    "comment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\n]*"
+        }
+      ]
+    },
+    "request": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "request_line"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "request_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "method"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\S\\n]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "path"
+        }
+      ]
+    },
+    "method": {
       "type": "CHOICE",
       "members": [
         {
@@ -34,31 +98,19 @@
         }
       ]
     },
-    "request_path": {
-      "type": "PATTERN",
-      "value": "\\/?([\\w\\-\\*\\.]+\\/?)+(\\?[^\\&\\?\\s]*(\\&[^\\&\\?\\s]*)*)?"
-    },
-    "request_body": {
-      "type": "SYMBOL",
-      "name": "_json_object"
-    },
-    "request": {
+    "path": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "request_type"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "request_path"
+          "name": "_pathname"
         },
         {
           "type": "CHOICE",
           "members": [
             {
               "type": "SYMBOL",
-              "name": "request_body"
+              "name": "_querystring"
             },
             {
               "type": "BLANK"
@@ -67,40 +119,171 @@
         }
       ]
     },
+    "_pathname": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "/"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_path_part"
+                  },
+                  {
+                    "type": "IMMEDIATE_TOKEN",
+                    "content": {
+                      "type": "STRING",
+                      "value": "/"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_path_part"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "IMMEDIATE_TOKEN",
+                  "content": {
+                    "type": "STRING",
+                    "value": "/"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "_path_part": {
+      "type": "PATTERN",
+      "value": "[^\\s\\/]+"
+    },
+    "_querystring": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "?"
+          }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_querystring_part"
+              },
+              {
+                "type": "IMMEDIATE_TOKEN",
+                "content": {
+                  "type": "STRING",
+                  "value": "&"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_querystring_part"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_querystring_part": {
+      "type": "PATTERN",
+      "value": "[^&\\?\\s]+"
+    },
+    "body": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_object"
+          },
+          {
+            "type": "STRING",
+            "value": "\n"
+          }
+        ]
+      }
+    },
     "_json_value": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_json_null"
+          "name": "_null"
         },
         {
           "type": "SYMBOL",
-          "name": "_json_boolean"
+          "name": "_boolean"
         },
         {
           "type": "SYMBOL",
-          "name": "_json_number"
+          "name": "_number"
         },
         {
           "type": "SYMBOL",
-          "name": "_json_string"
+          "name": "_string"
         },
         {
           "type": "SYMBOL",
-          "name": "_json_array"
+          "name": "_array"
         },
         {
           "type": "SYMBOL",
-          "name": "_json_object"
+          "name": "_object"
         }
       ]
     },
-    "_json_null": {
+    "_null": {
       "type": "STRING",
       "value": "null"
     },
-    "_json_boolean": {
+    "_boolean": {
       "type": "CHOICE",
       "members": [
         {
@@ -113,50 +296,58 @@
         }
       ]
     },
-    "_json_number": {
+    "_number": {
       "type": "PATTERN",
       "value": "\\-?\\d+(\\.\\d+)?((e|E)\\-?\\d+)?"
     },
-    "_json_string": {
-      "type": "CHOICE",
+    "_string_single": {
+      "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "\""
-            },
-            {
-              "type": "PATTERN",
-              "value": "[^\"]*"
-            },
-            {
-              "type": "STRING",
-              "value": "\""
-            }
-          ]
+          "type": "STRING",
+          "value": "\""
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "\"\"\""
-            },
-            {
-              "type": "PATTERN",
-              "value": "[^\"]*"
-            },
-            {
-              "type": "STRING",
-              "value": "\"\"\""
-            }
-          ]
+          "type": "PATTERN",
+          "value": "[^\"\\n]*"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
         }
       ]
     },
-    "_json_array": {
+    "_string_triple": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\"\"\""
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\"]*"
+        },
+        {
+          "type": "STRING",
+          "value": "\"\"\""
+        }
+      ]
+    },
+    "_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_string_single"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_string_triple"
+        }
+      ]
+    },
+    "_array": {
       "type": "CHOICE",
       "members": [
         {
@@ -165,23 +356,6 @@
             {
               "type": "STRING",
               "value": "["
-            },
-            {
-              "type": "STRING",
-              "value": "]"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "["
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_json_value"
             },
             {
               "type": "STRING",
@@ -224,25 +398,12 @@
         }
       ]
     },
-    "_json_object_def": {
+    "_object_key_val": {
       "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "\""
-            },
-            {
-              "type": "PATTERN",
-              "value": "[^\"]+"
-            },
-            {
-              "type": "STRING",
-              "value": "\""
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_string_single"
         },
         {
           "type": "STRING",
@@ -254,7 +415,7 @@
         }
       ]
     },
-    "_json_object": {
+    "_object": {
       "type": "CHOICE",
       "members": [
         {
@@ -278,30 +439,13 @@
               "value": "{"
             },
             {
-              "type": "SYMBOL",
-              "name": "_json_object_def"
-            },
-            {
-              "type": "STRING",
-              "value": "}"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "{"
-            },
-            {
               "type": "REPEAT",
               "content": {
                 "type": "SEQ",
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "_json_object_def"
+                    "name": "_object_key_val"
                   },
                   {
                     "type": "STRING",
@@ -312,7 +456,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_json_object_def"
+              "name": "_object_key_val"
             },
             {
               "type": "STRING",
@@ -325,6 +469,10 @@
   },
   "extras": [
     {
+      "type": "SYMBOL",
+      "name": "comment"
+    },
+    {
       "type": "PATTERN",
       "value": "\\s"
     }
@@ -333,5 +481,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }

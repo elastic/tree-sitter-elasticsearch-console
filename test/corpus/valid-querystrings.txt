@@ -1,0 +1,209 @@
+===
+Valid querystring 1
+===
+
+GET /foo/?
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 2
+===
+
+GET /foo?
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 3
+===
+
+GET /foo?bar
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 4
+===
+
+GET /foo?${bar}
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 5
+===
+
+GET /foo?bar=baz
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 6
+===
+
+GET /foo?bar=${baz}
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 7
+===
+
+GET /foo?${bar}=baz
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 8
+===
+
+GET /foo?${bar}=${baz}
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 9
+===
+
+GET /foo?bar=baz&bat
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 10
+===
+
+GET /foo?bar=baz&bat=1
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 11
+===
+
+GET /foo?bar=baz&${bat}=1
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 12
+===
+
+GET /foo?bar=${baz}12
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 13
+===
+
+GET /foo?bar=x${baz}x
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 14
+===
+
+GET /${foo}/?
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid querystring 15
+===
+
+GET /${foo}?
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))

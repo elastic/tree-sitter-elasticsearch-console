@@ -1,5 +1,26 @@
 [
   {
+    "type": "body",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "extra": true,
+    "fields": {}
+  },
+  {
+    "type": "method",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "path",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "request",
     "named": true,
     "fields": {},
@@ -8,29 +29,34 @@
       "required": true,
       "types": [
         {
-          "type": "request_body",
+          "type": "body",
           "named": true
         },
         {
-          "type": "request_path",
-          "named": true
-        },
-        {
-          "type": "request_type",
+          "type": "request_line",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "request_body",
+    "type": "request_line",
     "named": true,
-    "fields": {}
-  },
-  {
-    "type": "request_type",
-    "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "method",
+          "named": true
+        },
+        {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "source_file",
@@ -49,6 +75,10 @@
     }
   },
   {
+    "type": "\n",
+    "named": false
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -57,11 +87,27 @@
     "named": false
   },
   {
+    "type": "#",
+    "named": false
+  },
+  {
+    "type": "&",
+    "named": false
+  },
+  {
     "type": ",",
     "named": false
   },
   {
+    "type": "/",
+    "named": false
+  },
+  {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "?",
     "named": false
   },
   {
@@ -99,10 +145,6 @@
   {
     "type": "null",
     "named": false
-  },
-  {
-    "type": "request_path",
-    "named": true
   },
   {
     "type": "true",

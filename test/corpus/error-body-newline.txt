@@ -1,0 +1,8 @@
+===
+JSON body must be on new line
+:error
+===
+
+POST /my-index {"foo": "bar"}
+
+---

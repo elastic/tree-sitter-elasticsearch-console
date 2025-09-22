@@ -1,0 +1,8 @@
+===
+No whitespace between path parts
+:error
+===
+
+GET foo /bar /baz
+
+---

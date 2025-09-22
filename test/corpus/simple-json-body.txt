@@ -1,0 +1,15 @@
+===
+Request with simple JSON body
+===
+
+POST /my-index
+{"foo": "bar"}
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))
+    (body)))
