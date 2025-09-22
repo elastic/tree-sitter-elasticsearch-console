@@ -24,8 +24,16 @@
 module.exports = grammar({
   name: "elasticsearch_console",
 
+  extras: $ => [
+    $.comment,
+    /\s/,
+    /\r/,
+  ],
+
   rules: {
     source_file: $ => repeat($.request),
+
+    comment: $ => token(seq("#", /.*/)),
 
     request_type: $ => choice(
       'GET',
@@ -44,6 +52,7 @@ module.exports = grammar({
       $.request_path,
       optional($.request_body)
     ),
+
 
     _json_value: $ => choice(
       $._json_null,

@@ -1,0 +1,14 @@
+====
+Request with comment
+====
+
+# this is a request
+GET /_cat/indices
+
+---
+
+(source_file
+  (comment)
+  (request
+    (request_type)
+    (request_path)))
