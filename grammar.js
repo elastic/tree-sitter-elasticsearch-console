@@ -47,17 +47,31 @@ module.exports = grammar({
       'PUT'
     ),
 
-    _request_pathname_part: $ => choice(/[\w\-\*\.]+/, $.variable_ref),
-
-    _request_pathname_part_prefixed: $ => seq(token.immediate('/'), $._request_pathname_part),
-
+    // parses /foo/bar/baz
+    _request_pathname_part: $ => choice(
+      /[\w\-\*\._]+/,
+      seq(optional(/[\w\-\*\._]+/), $.variable_ref, optional(/[\w\-\*\._]+/))
+    ),
+    _request_pathname_part_prefixed: $ => seq(token('/'), $._request_pathname_part),
     request_pathname: $ => choice(
-      '/',
-      seq(optional('/'), $._request_pathname_part),
-      seq(optional('/'), $._request_pathname_part, optional(repeat($._request_pathname_part_prefixed))),
+      token('/'),
+      $._request_pathname_part,
+      seq(
+        optional(token('/')),
+        $._request_pathname_part,
+        optional(repeat($._request_pathname_part_prefixed)),
+        optional(token('/'))
+      ),
     ),
 
-    request_search: $ => token.immediate(/\?([^\&\?\s]*(\&[^\&\?\s]*)*)?/),
+    // parses ?foo=bar&baz
+    _request_search_part: $ => choice(/[^\&\?\s]+/, $.variable_ref),
+    _request_search_part_prefixed: $ => seq(token.immediate('&'), $._request_search_part),
+    request_search: $ => choice(
+      token.immediate('?'),
+      seq(token.immediate('?'), $._request_search_part),
+      seq(token.immediate('?'), $._request_search_part, optional(repeat($._request_search_part_prefixed)))
+    ),
 
     _request_path_end: $ => token('\n'),
 
@@ -71,7 +85,6 @@ module.exports = grammar({
       $._request_path_end,
       optional($.request_body)
     ),
-
 
     _json_value: $ => choice(
       $._json_null,

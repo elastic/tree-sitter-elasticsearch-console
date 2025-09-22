@@ -8,6 +8,8 @@ GET foo
 
 GET /foo
 
+GET /foo/
+
 GET foo/bar
 
 GET ${foo}
@@ -18,6 +20,12 @@ GET /${foo}/bar
 
 GET /${foo}/${bar}
 
+GET /${foo}-1
+
+GET /1-${foo}
+
+GET /x${foo}x
+
 ---
 
 (source_file
@@ -25,36 +33,48 @@ GET /${foo}/${bar}
     (request_type)
     (request_path
       (request_pathname)))
+
   (request
     (request_type)
     (request_path
       (request_pathname)))
+
   (request
     (request_type)
     (request_path
       (request_pathname)))
+
   (request
     (request_type)
     (request_path
       (request_pathname)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)))
+
   (request
     (request_type)
     (request_path
       (request_pathname
         (variable_ref
 	  (variable_name)))))
+
   (request
     (request_type)
     (request_path
       (request_pathname
         (variable_ref
 	  (variable_name)))))
+
   (request
     (request_type)
     (request_path
       (request_pathname
         (variable_ref
 	  (variable_name)))))
+
   (request
     (request_type)
     (request_path
@@ -62,4 +82,27 @@ GET /${foo}/${bar}
         (variable_ref
 	  (variable_name))
 	(variable_ref
-	  (variable_name))))))
+	  (variable_name)))))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname
+        (variable_ref
+	  (variable_name)))))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname
+        (variable_ref
+	  (variable_name)))))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname
+        (variable_ref
+	  (variable_name)))))
+
+)
