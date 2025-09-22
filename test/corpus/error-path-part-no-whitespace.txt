@@ -1,0 +1,15 @@
+===
+No whitespace between path parts
+===
+
+GET foo /bar /baz
+
+---
+
+(source_file
+  (request
+    (request_type)
+    (ERROR
+      (request_pathname))
+    (request_path
+      (request_pathname))))

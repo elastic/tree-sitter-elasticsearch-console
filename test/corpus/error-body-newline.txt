@@ -9,6 +9,6 @@ POST /my-index {"foo": "bar"}
 (source_file
   (ERROR
     (request_type)
-    (request_path)
+    (request_pathname)
     (UNEXPECTED 'o')
     (UNEXPECTED 'b')))

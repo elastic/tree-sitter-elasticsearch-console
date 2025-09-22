@@ -11,4 +11,5 @@ GET /_cat/indices
   (comment)
   (request
     (request_type)
-    (request_path)))
+    (request_path
+      (request_pathname))))

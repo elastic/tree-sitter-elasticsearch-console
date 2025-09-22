@@ -33,6 +33,10 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat($.request),
 
+    variable_name: $ => token(/[a-zA-Z_]{1}[a-zA-Z_\d]*/),
+
+    variable_ref: $ => seq("${", $.variable_name, "}"),
+
     comment: $ => token(seq("#", /.*/)),
 
     request_type: $ => choice(
@@ -43,9 +47,21 @@ module.exports = grammar({
       'PUT'
     ),
 
-    request_path: $ => /\/?([\w\-\*\.]+\/?)+(\?[^\&\?\s]*(\&[^\&\?\s]*)*)?/,
+    _request_pathname_part: $ => choice(/[\w\-\*\.]+/, $.variable_ref),
+
+    _request_pathname_part_prefixed: $ => seq(token.immediate('/'), $._request_pathname_part),
+
+    request_pathname: $ => choice(
+      '/',
+      seq(optional('/'), $._request_pathname_part),
+      seq(optional('/'), $._request_pathname_part, optional(repeat($._request_pathname_part_prefixed))),
+    ),
+
+    request_search: $ => token.immediate(/\?([^\&\?\s]*(\&[^\&\?\s]*)*)?/),
 
     _request_path_end: $ => token('\n'),
+
+    request_path: $ => seq($.request_pathname, optional($.request_search)),
 
     request_body: $ => $._json_object,
 

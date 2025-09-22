@@ -1,0 +1,65 @@
+===
+Valid URL paths
+===
+
+GET /
+
+GET foo
+
+GET /foo
+
+GET foo/bar
+
+GET ${foo}
+
+GET /${foo}
+
+GET /${foo}/bar
+
+GET /${foo}/${bar}
+
+---
+
+(source_file
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)))
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)))
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)))
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)))
+  (request
+    (request_type)
+    (request_path
+      (request_pathname
+        (variable_ref
+	  (variable_name)))))
+  (request
+    (request_type)
+    (request_path
+      (request_pathname
+        (variable_ref
+	  (variable_name)))))
+  (request
+    (request_type)
+    (request_path
+      (request_pathname
+        (variable_ref
+	  (variable_name)))))
+  (request
+    (request_type)
+    (request_path
+      (request_pathname
+        (variable_ref
+	  (variable_name))
+	(variable_ref
+	  (variable_name))))))
