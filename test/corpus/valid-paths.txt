@@ -103,6 +103,4 @@ GET /x${foo}x
     (request_path
       (request_pathname
         (variable_ref
-	  (variable_name)))))
-
-)
+	  (variable_name))))))
