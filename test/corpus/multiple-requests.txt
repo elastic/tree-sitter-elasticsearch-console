@@ -7,8 +7,6 @@ GET _cat/indices?foo=bar
 POST /my-index
 {"foo": "bar"}
 
-POST /my-index {"foo": "bar"}
-
 POST /my-index
 {
   "string": "foo",
@@ -27,10 +25,6 @@ POST /my-index
   (request
     (request_type)
     (request_path))
-  (request
-    (request_type)
-    (request_path)
-    (request_body))
   (request
     (request_type)
     (request_path)

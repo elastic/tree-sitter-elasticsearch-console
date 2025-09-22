@@ -45,11 +45,14 @@ module.exports = grammar({
 
     request_path: $ => /\/?([\w\-\*\.]+\/?)+(\?[^\&\?\s]*(\&[^\&\?\s]*)*)?/,
 
+    _request_path_end: $ => token('\n'),
+
     request_body: $ => $._json_object,
 
     request: $ => seq(
       $.request_type,
       $.request_path,
+      $._request_path_end,
       optional($.request_body)
     ),
 

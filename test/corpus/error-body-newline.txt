@@ -1,0 +1,14 @@
+===
+JSON body must be on new line
+===
+
+POST /my-index {"foo": "bar"}
+
+---
+
+(source_file
+  (ERROR
+    (request_type)
+    (request_path)
+    (UNEXPECTED 'o')
+    (UNEXPECTED 'b')))

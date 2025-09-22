@@ -54,6 +54,13 @@
       "type": "PATTERN",
       "value": "\\/?([\\w\\-\\*\\.]+\\/?)+(\\?[^\\&\\?\\s]*(\\&[^\\&\\?\\s]*)*)?"
     },
+    "_request_path_end": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "\n"
+      }
+    },
     "request_body": {
       "type": "SYMBOL",
       "name": "_json_object"
@@ -68,6 +75,10 @@
         {
           "type": "SYMBOL",
           "name": "request_path"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_request_path_end"
         },
         {
           "type": "CHOICE",
