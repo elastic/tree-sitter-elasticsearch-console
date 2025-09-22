@@ -1,0 +1,131 @@
+===
+Valid querystrings
+===
+
+GET /foo/?
+
+GET /foo?
+
+GET /foo?bar
+
+GET /foo?${bar}
+
+GET /foo?bar=baz
+
+GET /foo?bar=${baz}
+
+GET /foo?${bar}=baz
+
+GET /foo?${bar}=${baz}
+
+GET /foo?bar=baz&bat
+
+GET /foo?bar=baz&bat=1
+
+GET /foo?bar=baz&${bat}=1
+
+GET /foo?bar=${baz}12
+
+GET /foo?bar=x${baz}x
+
+GET /${foo}/?
+
+GET /${foo}?
+
+---
+
+(source_file
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+    (request_type)
+    (request_path
+      (request_pathname)
+      (request_search)))
+
+  (request
+   (request_type)
+   (request_path
+    (request_pathname
+     (variable_ref
+      (variable_name)))
+     (request_search)))
+
+  (request
+    (request_type)
+      (request_path
+        (request_pathname
+	 (variable_ref
+	  (variable_name)))
+	(request_search)))
+)

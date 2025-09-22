@@ -28,6 +28,55 @@
     "fields": {}
   },
   {
+    "type": "request_path",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "request_pathname",
+          "named": true
+        },
+        {
+          "type": "request_search",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "request_pathname",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "variable_ref",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "request_search",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "variable_ref",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "request_type",
     "named": true,
     "fields": {}
@@ -49,6 +98,25 @@
     }
   },
   {
+    "type": "variable_ref",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "variable_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -57,11 +125,27 @@
     "named": false
   },
   {
+    "type": "${",
+    "named": false
+  },
+  {
+    "type": "&",
+    "named": false
+  },
+  {
     "type": ",",
     "named": false
   },
   {
+    "type": "/",
+    "named": false
+  },
+  {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "?",
     "named": false
   },
   {
@@ -93,6 +177,11 @@
     "named": false
   },
   {
+    "type": "comment",
+    "named": true,
+    "extra": true
+  },
+  {
     "type": "false",
     "named": false
   },
@@ -101,12 +190,12 @@
     "named": false
   },
   {
-    "type": "request_path",
-    "named": true
-  },
-  {
     "type": "true",
     "named": false
+  },
+  {
+    "type": "variable_name",
+    "named": true
   },
   {
     "type": "{",

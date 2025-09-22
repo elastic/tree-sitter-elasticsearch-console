@@ -2,7 +2,7 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
   "grammars": [
     {
-      "name": "elasticsearch-console",
+      "name": "elasticsearch_console",
       "camelcase": "ElasticsearchConsole",
       "title": "Elasticsearch Developer Console",
       "scope": "source.elasticsearch_console",
