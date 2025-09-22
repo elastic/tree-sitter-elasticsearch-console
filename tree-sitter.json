@@ -1,19 +1,20 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
   "grammars": [
     {
       "name": "elasticsearch-console",
       "camelcase": "ElasticsearchConsole",
+      "title": "Elasticsearch Developer Console",
       "scope": "source.elasticsearch_console",
-      "path": ".",
       "file-types": [
         "esc"
       ],
-      "highlights": "queries/highlights.scm",
-      "injection-regex": "^elasticsearch_console$"
+      "injection-regex": "^elasticsearch_console$",
+      "class-name": "TreeSitterElasticsearchConsole"
     }
   ],
   "metadata": {
-    "version": "0.0.1",
+    "version": "0.1.0",
     "license": "MIT",
     "description": "ElasticsearchConsole grammar for tree-sitter",
     "links": {
@@ -26,6 +27,7 @@
     "node": true,
     "python": true,
     "rust": true,
-    "swift": true
+    "swift": true,
+    "zig": false
   }
 }
