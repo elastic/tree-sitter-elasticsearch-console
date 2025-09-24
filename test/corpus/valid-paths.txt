@@ -1,28 +1,160 @@
 ===
-Valid URL paths
+Valid URL path: single slash
 ===
 
 GET /
 
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid URL path: single part, no slash
+===
+
 GET foo
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid URL path: single part, leading slash
+===
 
 GET /foo
 
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid URL path: single part, leading and trailing slash
+===
+
 GET /foo/
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid URL path: two parts separated by slash
+===
 
 GET foo/bar
 
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid URL path: string interpolation 1
+===
+
 GET ${foo}
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid URL path: string interpolation 2
+===
 
 GET /${foo}
 
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid URL path: string interpolation 3
+===
+
 GET /${foo}/bar
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid URL path: string interpolation 4
+===
 
 GET /${foo}/${bar}
 
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid URL path: string interpolation 5
+===
+
 GET /${foo}-1
 
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid URL path: string interpolation 6
+===
+
 GET /1-${foo}
+
+---
+
+(source_file
+  (request
+    (request_line
+      (method)
+      (path))))
+
+===
+Valid URL path: string interpolation 7
+===
 
 GET /x${foo}x
 
@@ -30,77 +162,6 @@ GET /x${foo}x
 
 (source_file
   (request
-    (request_type)
-    (request_path
-      (request_pathname)))
-
-  (request
-    (request_type)
-    (request_path
-      (request_pathname)))
-
-  (request
-    (request_type)
-    (request_path
-      (request_pathname)))
-
-  (request
-    (request_type)
-    (request_path
-      (request_pathname)))
-
-  (request
-    (request_type)
-    (request_path
-      (request_pathname)))
-
-  (request
-    (request_type)
-    (request_path
-      (request_pathname
-        (variable_ref
-	  (variable_name)))))
-
-  (request
-    (request_type)
-    (request_path
-      (request_pathname
-        (variable_ref
-	  (variable_name)))))
-
-  (request
-    (request_type)
-    (request_path
-      (request_pathname
-        (variable_ref
-	  (variable_name)))))
-
-  (request
-    (request_type)
-    (request_path
-      (request_pathname
-        (variable_ref
-	  (variable_name))
-	(variable_ref
-	  (variable_name)))))
-
-  (request
-    (request_type)
-    (request_path
-      (request_pathname
-        (variable_ref
-	  (variable_name)))))
-
-  (request
-    (request_type)
-    (request_path
-      (request_pathname
-        (variable_ref
-	  (variable_name)))))
-
-  (request
-    (request_type)
-    (request_path
-      (request_pathname
-        (variable_ref
-	  (variable_name))))))
+    (request_line
+      (method)
+      (path))))

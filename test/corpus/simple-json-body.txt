@@ -9,7 +9,7 @@ POST /my-index
 
 (source_file
   (request
-    (request_type)
-    (request_path
-      (request_pathname))
-    (request_body)))
+    (request_line
+      (method)
+      (path))
+    (body)))

@@ -1,15 +1,17 @@
 ===
 No whitespace between path parts
+:error
 ===
 
 GET foo /bar /baz
 
 ---
 
-(source_file
-  (request
-    (request_type)
-    (ERROR
-      (request_pathname))
-    (request_path
-      (request_pathname))))
+===
+No whitespace between path and querystring
+:error
+===
+
+GET /foo ?bar=baz
+
+---

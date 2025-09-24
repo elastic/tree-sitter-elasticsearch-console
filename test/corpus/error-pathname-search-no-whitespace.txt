@@ -1,13 +1,8 @@
 ===
 No whitespace allowed between pathname and search
+:error
 ===
 
 GET /foo/bar ?baz=bat
 
 ---
-
-(source_file
-  (ERROR
-    (request_type)
-    (request_pathname)
-    (UNEXPECTED '?')))

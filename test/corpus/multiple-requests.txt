@@ -7,7 +7,7 @@ GET _cat/indices?foo=bar
 POST /my-index
 {"foo": "bar"}
 
-POST /my-index
+POST   /my-index
 {
   "string": "foo",
   "boolean": true,
@@ -23,17 +23,16 @@ POST /my-index
 
 (source_file
   (request
-    (request_type)
-    (request_path
-      (request_pathname)
-      (request_search)))
+    (request_line
+      (method)
+      (path)))
   (request
-    (request_type)
-    (request_path
-      (request_pathname))
-    (request_body))
+    (request_line
+      (method)
+      (path))
+    (body))
   (request
-    (request_type)
-    (request_path
-      (request_pathname))
-    (request_body)))
+    (request_line
+      (method)
+      (path))
+    (body)))

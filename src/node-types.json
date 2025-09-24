@@ -1,5 +1,26 @@
 [
   {
+    "type": "body",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "extra": true,
+    "fields": {}
+  },
+  {
+    "type": "method",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "path",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "request",
     "named": true,
     "fields": {},
@@ -8,27 +29,18 @@
       "required": true,
       "types": [
         {
-          "type": "request_body",
+          "type": "body",
           "named": true
         },
         {
-          "type": "request_path",
-          "named": true
-        },
-        {
-          "type": "request_type",
+          "type": "request_line",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "request_body",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "request_path",
+    "type": "request_line",
     "named": true,
     "fields": {},
     "children": {
@@ -36,50 +48,15 @@
       "required": true,
       "types": [
         {
-          "type": "request_pathname",
+          "type": "method",
           "named": true
         },
         {
-          "type": "request_search",
+          "type": "path",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "request_pathname",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "variable_ref",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "request_search",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "variable_ref",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "request_type",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "source_file",
@@ -98,21 +75,6 @@
     }
   },
   {
-    "type": "variable_ref",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "variable_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "\n",
     "named": false
   },
@@ -125,7 +87,7 @@
     "named": false
   },
   {
-    "type": "${",
+    "type": "#",
     "named": false
   },
   {
@@ -177,11 +139,6 @@
     "named": false
   },
   {
-    "type": "comment",
-    "named": true,
-    "extra": true
-  },
-  {
     "type": "false",
     "named": false
   },
@@ -192,10 +149,6 @@
   {
     "type": "true",
     "named": false
-  },
-  {
-    "type": "variable_name",
-    "named": true
   },
   {
     "type": "{",

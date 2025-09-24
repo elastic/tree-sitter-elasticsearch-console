@@ -1,0 +1,11 @@
+===
+comment should terminate at end of line
+:error
+===
+
+# this is a comment
+this is a comment too
+GET /my-index/_doc/1
+
+---
+

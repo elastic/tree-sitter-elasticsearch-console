@@ -10,6 +10,6 @@ GET /_cat/indices
 (source_file
   (comment)
   (request
-    (request_type)
-    (request_path
-      (request_pathname))))
+    (request_line
+     (method)
+     (path))))

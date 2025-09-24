@@ -1,14 +1,8 @@
 ===
 JSON body must be on new line
+:error
 ===
 
 POST /my-index {"foo": "bar"}
 
 ---
-
-(source_file
-  (ERROR
-    (request_type)
-    (request_pathname)
-    (UNEXPECTED 'o')
-    (UNEXPECTED 'b')))

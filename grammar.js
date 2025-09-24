@@ -20,26 +20,28 @@
  * under the License.
  */
 
-// TODO: support for # and // comments
 module.exports = grammar({
   name: "elasticsearch_console",
 
   extras: $ => [
     $.comment,
     /\s/,
-    /\r/,
   ],
 
   rules: {
-    source_file: $ => repeat($.request),
+    source_file: $ => repeat(choice($.request, '\n')),
 
-    variable_name: $ => token(/[a-zA-Z_]{1}[a-zA-Z_\d]*/),
+    comment: $ => seq("#", /[^\n]*/),
 
-    variable_ref: $ => seq("${", $.variable_name, "}"),
+    request: $ => seq(
+      $.request_line,
+      '\n',
+      optional($.body),
+    ),
 
-    comment: $ => token(seq("#", /.*/)),
+    request_line: $ => seq($.method, /[^\S\n]+/, $.path),
 
-    request_type: $ => choice(
+    method: $ => choice(
       'GET',
       'HEAD',
       'DELETE',
@@ -47,108 +49,70 @@ module.exports = grammar({
       'PUT'
     ),
 
-    // parses /foo/bar/baz
-    _request_pathname_part: $ => choice(
-      /[\w\-\*\._]+/,
-      seq(optional(/[\w\-\*\._]+/), $.variable_ref, optional(/[\w\-\*\._]+/))
+    path: $ => seq(
+      $._pathname,
+      optional($._querystring)
     ),
-    _request_pathname_part_prefixed: $ => seq(token('/'), $._request_pathname_part),
-    request_pathname: $ => choice(
-      token('/'),
-      $._request_pathname_part,
+
+    _pathname: $ => choice(
+      '/',
       seq(
-        optional(token('/')),
-        $._request_pathname_part,
-        optional(repeat($._request_pathname_part_prefixed)),
-        optional(token('/'))
-      ),
-    ),
-
-    // parses ?foo=bar&baz
-    _request_search_part: $ => choice(/[^\&\?\s]+/, $.variable_ref),
-    _request_search_part_prefixed: $ => seq(token.immediate('&'), $._request_search_part),
-    request_search: $ => choice(
-      token.immediate('?'),
-      seq(token.immediate('?'), $._request_search_part),
-      seq(token.immediate('?'), $._request_search_part, optional(repeat($._request_search_part_prefixed)))
-    ),
-
-    _request_path_end: $ => token('\n'),
-
-    request_path: $ => seq($.request_pathname, optional($.request_search)),
-
-    request_body: $ => $._json_object,
-
-    request: $ => seq(
-      $.request_type,
-      $.request_path,
-      $._request_path_end,
-      optional($.request_body)
-    ),
-
-    _json_value: $ => choice(
-      $._json_null,
-      $._json_boolean,
-      $._json_number,
-      $._json_string,
-      $._json_array,
-      $._json_object
-    ),
-
-    _json_null: $ => "null",
-
-    _json_boolean: $ => choice(
-      "true",
-      "false"
-    ),
-
-    _json_number: $ => /\-?\d+(\.\d+)?((e|E)\-?\d+)?/,
-
-    _json_string: $ => choice(
-      seq(
-        '"',
-        /[^"]*/,
-        '"',
-      ),
-      seq(
-        '"""',
-        /[^"]*/,
-        '"""',
+        optional('/'),
+        repeat(seq($._path_part, token.immediate('/'))),
+        $._path_part,
+        optional(token.immediate('/'))
       )
     ),
 
-    _json_array: $ => choice(
+    _path_part: $ => /[^\s\/]+/,
+
+    _querystring: $ => seq(
+      token.immediate('?'),
+      repeat(seq($._querystring_part, token.immediate('&'))),
+      optional($._querystring_part)
+    ),
+
+    _querystring_part: $ => /[^&\?\s]+/,
+
+    body: $ => repeat1(seq($._object, '\n')),
+
+    _json_value: $ => choice(
+      $._null,
+      $._boolean,
+      $._number,
+      $._string,
+      $._array,
+      $._object
+    ),
+
+    _null: $ => "null",
+
+    _boolean: $ => choice("true", "false"),
+
+    _number: $ => /\-?\d+(\.\d+)?((e|E)\-?\d+)?/,
+
+    _string_single: $ => seq('"', /[^"\n]*/, '"'),
+    _string_triple: $ => seq('"""', /[^"]*/, '"""'),
+    _string: $ => choice($._string_single, $._string_triple),
+
+    _array: $ => choice(
       seq('[', ']'),
       seq(
         '[',
+        repeat(seq($._json_value, ',')),
         $._json_value,
         ']'
       ),
-      seq(
-        '[',
-        repeat(seq($._json_value, ",")),
-        $._json_value,
-        ']'
-      )
     ),
 
-    _json_object_def: $ => seq(
-      seq('"', /[^"]+/, '"'),
-      ":",
-      $._json_value,
-    ),
+    _object_key_val: $ => seq($._string_single, ":", $._json_value),
 
-    _json_object: $ => choice(
+    _object: $ => choice(
       seq("{", "}"),
       seq(
         "{",
-        $._json_object_def,
-        "}"
-      ),
-      seq(
-        "{",
-        repeat(seq($._json_object_def, ",")),
-        $._json_object_def,
+        repeat(seq($._object_key_val, ",")),
+        $._object_key_val,
         "}"
       )
     )
