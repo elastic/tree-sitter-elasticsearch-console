@@ -6,3 +6,12 @@ No whitespace between path parts
 GET foo /bar /baz
 
 ---
+
+===
+No whitespace between path and querystring
+:error
+===
+
+GET /foo ?bar=baz
+
+---
