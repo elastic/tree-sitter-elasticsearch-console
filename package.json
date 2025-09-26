@@ -1,9 +1,9 @@
 {
   "name": "tree-sitter-elasticsearch-console",
-  "version": "0.0.1",
-  "description": "ElasticsearchConsole grammar for tree-sitter",
-  "repository": "https://github.com/tree-sitter/tree-sitter-elasticsearch-console",
-  "license": "MIT",
+  "version": "0.1.0",
+  "description": "Elasticsearch developer console grammar for tree-sitter",
+  "repository": "https://github.com/elastic/tree-sitter-elasticsearch-console",
+  "license": "Apache-2.0",
   "author": {
     "name": "Josh Mock",
     "email": "joshua.mock@elastic.co"
@@ -14,7 +14,9 @@
     "incremental",
     "parsing",
     "tree-sitter",
-    "elasticsearch_console"
+    "elasticsearch_console",
+    "Elasticsearch",
+    "Kibana"
   ],
   "files": [
     "grammar.js",

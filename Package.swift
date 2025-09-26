@@ -1,4 +1,8 @@
 // swift-tools-version:5.3
+/*
+ * Copyright Elasticsearch B.V. and contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
 import PackageDescription
 
 let package = Package(

@@ -15,10 +15,10 @@
   ],
   "metadata": {
     "version": "0.1.0",
-    "license": "MIT",
-    "description": "ElasticsearchConsole grammar for tree-sitter",
+    "license": "Apache-2.0",
+    "description": "Elasticsearch developer console grammar for tree-sitter",
     "links": {
-      "repository": "https://github.com/tree-sitter/tree-sitter-elasticsearch-console"
+      "repository": "https://github.com/elastic/tree-sitter-elasticsearch-console"
     }
   },
   "bindings": {
