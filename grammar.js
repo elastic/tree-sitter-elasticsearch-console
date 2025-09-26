@@ -36,10 +36,14 @@ module.exports = grammar({
     request: $ => seq(
       $.request_line,
       '\n',
-      optional($.body),
+      optional(field('body', $.body)),
     ),
 
-    request_line: $ => seq($.method, /[^\S\n]+/, $.path),
+    request_line: $ => seq(
+      field('method', $.method),
+      /[^\S\n]+/,
+      field('path', $.path)
+    ),
 
     method: $ => choice(
       'GET',

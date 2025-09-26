@@ -46,8 +46,12 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "body"
+              "type": "FIELD",
+              "name": "body",
+              "content": {
+                "type": "SYMBOL",
+                "name": "body"
+              }
             },
             {
               "type": "BLANK"
@@ -60,16 +64,24 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "method"
+          "type": "FIELD",
+          "name": "method",
+          "content": {
+            "type": "SYMBOL",
+            "name": "method"
+          }
         },
         {
           "type": "PATTERN",
           "value": "[^\\S\\n]+"
         },
         {
-          "type": "SYMBOL",
-          "name": "path"
+          "type": "FIELD",
+          "name": "path",
+          "content": {
+            "type": "SYMBOL",
+            "name": "path"
+          }
         }
       ]
     },
