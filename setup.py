@@ -1,3 +1,5 @@
+# Copyright Elasticsearch B.V. and contributors
+# SPDX-License-Identifier: Apache-2.0
 from os import path
 from sysconfig import get_config_var
 
@@ -11,7 +13,9 @@ from wheel.bdist_wheel import bdist_wheel
 class Build(build):
     def run(self):
         if path.isdir("queries"):
-            dest = path.join(self.build_lib, "tree_sitter_elasticsearch-console", "queries")
+            dest = path.join(
+                self.build_lib, "tree_sitter_elasticsearch-console", "queries"
+            )
             self.copy_tree("queries", dest)
         super().run()
 
@@ -73,5 +77,5 @@ setup(
         "bdist_wheel": BdistWheel,
         "egg_info": EggInfo,
     },
-    zip_safe=False
+    zip_safe=False,
 )

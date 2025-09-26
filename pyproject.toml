@@ -4,22 +4,22 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tree-sitter-elasticsearch-console"
-description = "ElasticsearchConsole grammar for tree-sitter"
-version = "0.0.1"
-keywords = ["incremental", "parsing", "tree-sitter", "elasticsearch-console"]
+description = "Elasticsearch developer console grammar for tree-sitter"
+version = "0.1.0"
+keywords = ["incremental", "parsing", "tree-sitter", "elasticsearch-console", "Elasticsearch", "Kibana"]
 classifiers = [
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
+  "License :: OSI Approved :: Apache 2.0 License",
   "Topic :: Software Development :: Compilers",
   "Topic :: Text Processing :: Linguistic",
   "Typing :: Typed"
 ]
 requires-python = ">=3.10"
-license.text = "MIT"
+license.text = "Apache-2.0"
 readme = "README.md"
 
 [project.urls]
-Homepage = "https://github.com/tree-sitter/tree-sitter-elasticsearch-console"
+Homepage = "https://github.com/elastic/tree-sitter-elasticsearch-console"
 
 [project.optional-dependencies]
 core = ["tree-sitter~=0.24"]

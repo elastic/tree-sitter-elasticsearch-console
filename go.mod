@@ -1,4 +1,4 @@
-module github.com/tree-sitter/tree-sitter-elasticsearch_console
+module github.com/elastic/tree-sitter-elasticsearch_console
 
 go 1.23
 

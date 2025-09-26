@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-elasticsearch-console
         VERSION "0.1.0"
-        DESCRIPTION "ElasticsearchConsole grammar for tree-sitter"
-        HOMEPAGE_URL "https://github.com/tree-sitter/tree-sitter-elasticsearch-console"
+        DESCRIPTION "Elasticsearch developer console grammar for tree-sitter"
+        HOMEPAGE_URL "https://github.com/elastic/tree-sitter-elasticsearch-console"
         LANGUAGES C)
 
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
