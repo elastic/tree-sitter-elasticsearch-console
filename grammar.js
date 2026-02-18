@@ -6,7 +6,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-module.exports = grammar({
+export default grammar({
   name: "elasticsearch_console",
 
   extras: $ => [
