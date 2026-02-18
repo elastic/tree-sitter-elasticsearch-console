@@ -67,22 +67,29 @@ module.exports = grammar({
     body: $ => repeat1(seq($._object, '\n')),
 
     _json_value: $ => choice(
-      $._null,
-      $._boolean,
-      $._number,
-      $._string,
+      $.json_null,
+      $.json_boolean,
+      $.json_number,
+      $.json_string,
       $._array,
       $._object
     ),
 
-    _null: $ => "null",
+    json_null: $ => "null",
 
-    _boolean: $ => choice("true", "false"),
+    json_boolean: $ => choice("true", "false"),
 
-    _number: $ => /\-?\d+(\.\d+)?((e|E)\-?\d+)?/,
+    json_number: $ => /\-?\d+(\.\d+)?((e|E)\-?\d+)?/,
+
+    json_string: $ => choice($._string_single, $._string_triple),
 
     _string_single: $ => seq('"', /[^"\n]*/, '"'),
-    _string_triple: $ => seq('"""', /[^"]*/, '"""'),
+    _string_triple: $ => seq('"""', optional($._string_triple_content), '"""'),
+    _string_triple_content: $ => repeat1(choice(
+      /[^"]/,
+      seq('"', /[^"]/),
+      seq('""', /[^"]/),
+    )),
     _string: $ => choice($._string_single, $._string_triple),
 
     _array: $ => choice(

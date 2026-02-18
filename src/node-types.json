@@ -2,12 +2,44 @@
   {
     "type": "body",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "json_boolean",
+          "named": true
+        },
+        {
+          "type": "json_null",
+          "named": true
+        },
+        {
+          "type": "json_number",
+          "named": true
+        },
+        {
+          "type": "json_string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "comment",
     "named": true,
     "extra": true,
+    "fields": {}
+  },
+  {
+    "type": "json_boolean",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "json_string",
+    "named": true,
     "fields": {}
   },
   {
@@ -97,6 +129,10 @@
     "named": false
   },
   {
+    "type": "\"\"",
+    "named": false
+  },
+  {
     "type": "\"\"\"",
     "named": false
   },
@@ -157,8 +193,12 @@
     "named": false
   },
   {
-    "type": "null",
-    "named": false
+    "type": "json_null",
+    "named": true
+  },
+  {
+    "type": "json_number",
+    "named": true
   },
   {
     "type": "true",

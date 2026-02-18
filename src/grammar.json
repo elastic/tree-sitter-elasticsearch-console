@@ -267,19 +267,19 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_null"
+          "name": "json_null"
         },
         {
           "type": "SYMBOL",
-          "name": "_boolean"
+          "name": "json_boolean"
         },
         {
           "type": "SYMBOL",
-          "name": "_number"
+          "name": "json_number"
         },
         {
           "type": "SYMBOL",
-          "name": "_string"
+          "name": "json_string"
         },
         {
           "type": "SYMBOL",
@@ -291,11 +291,11 @@
         }
       ]
     },
-    "_null": {
+    "json_null": {
       "type": "STRING",
       "value": "null"
     },
-    "_boolean": {
+    "json_boolean": {
       "type": "CHOICE",
       "members": [
         {
@@ -308,9 +308,22 @@
         }
       ]
     },
-    "_number": {
+    "json_number": {
       "type": "PATTERN",
       "value": "\\-?\\d+(\\.\\d+)?((e|E)\\-?\\d+)?"
+    },
+    "json_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_string_single"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_string_triple"
+        }
+      ]
     },
     "_string_single": {
       "type": "SEQ",
@@ -337,14 +350,60 @@
           "value": "\"\"\""
         },
         {
-          "type": "PATTERN",
-          "value": "[^\"]*"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_string_triple_content"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
           "value": "\"\"\""
         }
       ]
+    },
+    "_string_triple_content": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[^\"]"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "\""
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^\"]"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "\"\""
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^\"]"
+              }
+            ]
+          }
+        ]
+      }
     },
     "_string": {
       "type": "CHOICE",

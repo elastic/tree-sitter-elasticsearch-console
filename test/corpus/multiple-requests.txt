@@ -30,9 +30,20 @@ POST   /my-index
     (request_line
       (method)
       (path))
-    (body))
+    (body
+      (json_string)))
   (request
     (request_line
       (method)
       (path))
-    (body)))
+    (body
+      (json_string)
+      (json_boolean)
+      (json_number)
+      (json_null)
+      (json_string)
+      (json_number)
+      (json_string)
+      (json_number)
+      (json_null)
+      (json_boolean))))

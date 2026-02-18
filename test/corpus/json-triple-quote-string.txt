@@ -15,4 +15,5 @@ bar"""
     (request_line
       (method)
       (path))
-    (body)))
+    (body
+      (json_string))))
