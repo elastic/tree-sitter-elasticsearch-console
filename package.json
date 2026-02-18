@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-elasticsearch-console",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Elasticsearch developer console grammar for tree-sitter",
   "type": "module",
   "repository": "https://github.com/elastic/tree-sitter-elasticsearch-console",
@@ -9,8 +9,8 @@
     "name": "Josh Mock",
     "email": "joshua.mock@elastic.co"
   },
-  "main": "bindings/node",
-  "types": "bindings/node",
+  "main": "bindings/node/index.js",
+  "types": "bindings/node/index.d.ts",
   "keywords": [
     "incremental",
     "parsing",
