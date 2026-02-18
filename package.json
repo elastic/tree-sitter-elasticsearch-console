@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-elasticsearch-console",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Elasticsearch developer console grammar for tree-sitter",
   "type": "module",
   "repository": "https://github.com/elastic/tree-sitter-elasticsearch-console",
