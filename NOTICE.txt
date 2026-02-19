@@ -1,2 +1,2 @@
 Elasticsearch developer console tree-sitter grammar
-Copyright 2025 Elasticsearch B.V.
+Copyright 2026 Elasticsearch B.V.
