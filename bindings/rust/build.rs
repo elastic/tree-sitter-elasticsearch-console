@@ -36,5 +36,13 @@ fn main() {
     println!("cargo:rerun-if-changed={}", scanner_path.to_str().unwrap());
     */
 
+    // Expose each query constant in lib.rs only when its file exists.
+    for query in ["highlights", "injections", "locals", "tags"] {
+        println!("cargo:rustc-check-cfg=cfg(with_{query}_query)");
+        if std::path::Path::new(&format!("queries/{query}.scm")).exists() {
+            println!("cargo:rustc-cfg=with_{query}_query");
+        }
+    }
+
     c_config.compile("tree-sitter-elasticsearch_console");
 }
