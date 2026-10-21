@@ -1,3 +1,8 @@
+/*
+ * Copyright Elasticsearch B.V. and contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 //! This crate provides ElasticsearchConsole language support for the [tree-sitter][] parsing library.
 //!
 //! Typically, you will use the [LANGUAGE][] constant to add this language to a

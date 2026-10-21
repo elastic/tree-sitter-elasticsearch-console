@@ -1,3 +1,8 @@
+/*
+ * Copyright Elasticsearch B.V. and contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 #ifndef TREE_SITTER_elasticsearch_console_H_
 #define TREE_SITTER_elasticsearch_console_H_
 

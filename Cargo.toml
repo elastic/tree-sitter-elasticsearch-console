@@ -1,3 +1,6 @@
+# Copyright Elasticsearch B.V. and contributors
+# SPDX-License-Identifier: Apache-2.0
+
 [package]
 name = "tree-sitter-elasticsearch-console"
 description = "Elasticsearch developer console grammar for tree-sitter"
