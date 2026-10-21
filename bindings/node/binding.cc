@@ -1,3 +1,8 @@
+/*
+ * Copyright Elasticsearch B.V. and contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 #include <napi.h>
 
 typedef struct TSLanguage TSLanguage;

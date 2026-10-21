@@ -1,3 +1,8 @@
+/*
+ * Copyright Elasticsearch B.V. and contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 package tree_sitter_elasticsearch_console
 
 // #cgo CFLAGS: -std=c11 -fPIC

@@ -1,3 +1,6 @@
+# Copyright Elasticsearch B.V. and contributors
+# SPDX-License-Identifier: Apache-2.0
+
 LANGUAGE_NAME := tree-sitter-elasticsearch-console
 HOMEPAGE_URL := https://github.com/elastic/tree-sitter-elasticsearch-console
 VERSION := 0.1.0

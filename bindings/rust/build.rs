@@ -1,3 +1,8 @@
+/*
+ * Copyright Elasticsearch B.V. and contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 fn main() {
     let src_dir = std::path::Path::new("src");
 
