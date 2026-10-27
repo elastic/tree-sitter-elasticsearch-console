@@ -1,3 +1,6 @@
+# Copyright Elasticsearch B.V. and contributors
+# SPDX-License-Identifier: Apache-2.0
+
 from typing import Final
 from typing_extensions import CapsuleType
 
